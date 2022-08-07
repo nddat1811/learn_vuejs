@@ -1,17 +1,36 @@
 <template>
     <header>
-        <h1> {{ text }}</h1>
+        <h1> {{ title }} <br>
+            <button v-on:click="changeTittleHeader">
+                Thay đổi tittle từ Component Header.vue
+            </button>
+
+        </h1>
+
     </header>
 </template>
 
 <script>
 export default {
     name: 'comp-header',
-    data() {
-        return {
-            text: 'Header',
+    props: {
+        title: {
+            type: String,
+            default: "sso"
         }
     },
+    data() {
+        return {
+        }
+    },
+    methods: {
+        changeTittleHeader(e) {
+            let data = {
+                title: "transfer title ne"
+            }
+            this.$emit('changeTitleEvent', data)
+        } 
+    }
 }
 </script>
 
