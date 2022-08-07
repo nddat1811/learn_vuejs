@@ -7,7 +7,9 @@
       />
       <img src="./assets/logo.png" />
       <!-- // <HelloWorld/> -->
-      <list-user v-bind:listUser="listUser" />
+      <list-user
+       v-bind:listUser="listUser"
+       v-on:deleteUserEvent="handleDeleteUser" />
       <component-footer
         v-bind:title="title"
         v-on:changeTitleEvent="handleChangeTitle"
@@ -50,6 +52,17 @@ export default {
     handleChangeTitle(data) {
       this.title = data.title;
     },
+    handleDeleteUser(data) {
+      let indexDelete = -1;
+      this.listUser.forEach((u, idx) => {
+        if (u.id === data.id) {
+          indexDelete = idx;
+        }
+      });
+      if (indexDelete != -1 ){
+        this.listUser.splice(indexDelete, 1)
+      }
+    }
   },
 };
 </script>
