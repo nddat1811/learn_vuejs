@@ -14,6 +14,7 @@
         v-bind:title="title"
         v-on:changeTitleEvent="handleChangeTitle"
       />
+      <demo-ref/>
     </div>
   </div>
 </template>
@@ -23,6 +24,7 @@ import HelloWorld from "./components/HelloWorld";
 import ComponentHeader from "./components/ComponentHeader.vue";
 import ComponentFooter from "./components/ComponentFooter.vue";
 import ListUser from "./components/ListUser.vue";
+import DemoRef from "./components/Demo-ref.vue";
 
 export default {
   name: "App",
@@ -47,7 +49,8 @@ export default {
     ComponentHeader,
     ComponentFooter,
     ListUser,
-  },
+    DemoRef
+},
   methods: {
     handleChangeTitle(data) {
       this.title = data.title;
