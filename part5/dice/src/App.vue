@@ -44,7 +44,7 @@ export default {
             isOpenPopup: false,
             activePlayer: 0, //Ai là người chơi hiện tại? 
             scoresPlayer: [0, 0],
-            dices: [2, 6],
+            dices: [2, 2],
             currentScore: 0,
             finalScore: 10
 		}

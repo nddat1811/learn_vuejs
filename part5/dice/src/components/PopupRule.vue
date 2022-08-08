@@ -2,7 +2,7 @@
     <div class="wrapper-popup" v-bind:class="getClassPopup">
         <div class="rule">
             <h3>Luật chơi</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum iure quia facere aut. Nostrum fuga accusamus, minima, facilis explicabo minus, blanditiis eos nisi culpa optio voluptates cumque ducimus in adipisci.</p>
+            <p>Roll until you higher or balance input score. If your one of dice is equal 1 so your score return 0</p>
             <button 
                 v-on:click="confirm"
                 class="confirm">Đã hiểu</button>
