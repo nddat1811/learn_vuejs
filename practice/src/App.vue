@@ -1,24 +1,58 @@
 <template>
   <div class="container">
-    <Header title="SOS"></Header>
-    <Tasks :tasks="tasks"></Tasks>
+    <Header
+      title="SOS"
+      @toggle-add-task="toggleAddTask"
+      :showAddTask="showAddTask"
+    />
+    <div v-show="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
+
+    <Tasks
+      :tasks="tasks"
+      @deleteTask="deleteTask"
+      @toggleReminder="toggleReminder"
+    ></Tasks>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import Tasks from "./components/Tasks.vue";
+import AddTask from "./components/AddTask.vue";
 
 export default {
   name: "App",
   components: {
     Header,
-    Tasks
-},
+    Tasks,
+    AddTask,
+  },
   data() {
     return {
       tasks: [],
+      showAddTask: false,
     };
+  },
+  methods: {
+    deleteTask(id) {
+      if (confirm("Sure?")) {
+        this.tasks = this.tasks.filter((task) => task.id !== id);
+      }
+    },
+    toggleReminder(id) {
+      console.log("SOS");
+      this.tasks = this.tasks.map((task) => {
+        task.id === id ? { ...task, reminder: !task.reminder } : task;
+      });
+    },
+    addTask(task) {
+      this.tasks = [...this.tasks, task];
+    },
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
+    },
   },
   created() {
     this.tasks = [
